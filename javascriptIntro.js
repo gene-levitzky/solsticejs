@@ -66,10 +66,66 @@ console.log(result); // Should print 10
 //// OBJECTS ////
 /////////////////
 
+// There's a variety of ways of creating objects, here's a few different ways:
 
-// Coming soon...
+var object1 = {}; // equivalently, var object1 = new Object();
 
+object1.property1 = "Some property of object1";
+object1.property2 = 72;
+object1.function1 = function (a) {
+  this.property2 += a;
+}
 
+console.log(object1.property2); // Should print 72
 
-// To "run" this script, open a command prompt and navigate to the directory where this file is
-// Then run the command "node javascriptIntro.js"
+object1.function1(8);
+
+console.log(object1.property2); // Should print 80
+
+// But this way is better:
+
+var object2 = {
+
+  property1: "Some of property of object2.",
+  
+  property2: 72,
+  
+  function1: function (a) {
+    this.property2 += a;
+  }
+};
+
+console.log(object2.property2); // Should print 72
+
+object2.function1(8);
+
+console.log(object2.property2); // Should print 80
+
+// Even better, if you want your objects to be modular, you right a function to make them:
+
+function objectMaker (property1, property2, function1) {
+
+  var object = {
+    
+    property1: property1,
+    // you can also do "property1": property1, and it's exactly the same
+    property2: property2,
+    
+    function1: function1  
+  };
+
+  return object;
+}
+
+var object3 = objectMaker("Some property of object3", 72, function (a) {
+  object3.property2 += a;
+  // Note that this is actually poor modularity.
+  // In good modular design, you should never know about the inner workings of an object,
+  // whereas here we assumed objectMaker produces an object with a field called "property2".
+});
+
+console.log(object3.property2); // Should print 72
+
+object3.function1(8);
+
+console.log(object3.property2); // Should print 80
