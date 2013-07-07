@@ -91,6 +91,7 @@ exports.Order = function (name, description, attribute)
  *  5 hp/mp, or 1 of any other attribute.)
  */
  
+/** Sample Order */
 exports.GenericKnight = function () {
 
   var name = "Generic Knight";

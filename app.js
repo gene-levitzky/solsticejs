@@ -42,8 +42,9 @@ var sha1 = sha1.getSha1();
 /*
  *  Routes.
  */
- /** If the server receives a request for "/",
- Send them index.ejs.
+/** 
+ * If the server receives a request for "/",
+ * Send them index.ejs.
  */
 app.get('/', function(req, res) {
     res.render('index', {'phrase':'Ipsum Lorem...'});                
