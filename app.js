@@ -3,7 +3,8 @@
  */
 var express = require('express')
   , http    = require('http')
-  , path    = require('path');
+  , path    = require('path')
+  , sha1    = require('SHA1');
 
 /**
  *  Configuration and Middleware.
@@ -35,6 +36,9 @@ app.configure('development', function() {
   app.use(express.errorHandler());
 });
 
+// For password hashing
+var sha1 = sha1.getSha1();
+
 /*
  *  Routes.
  */
@@ -42,11 +46,11 @@ app.configure('development', function() {
  Send them index.ejs.
  */
 app.get('/', function(req, res) {
-    res.render('index');                
+    res.render('index', {'phrase':'Ipsum Lorem...'});                
 });
 /** Ditto for "/index" */
 app.get('/index', function(req, res) {
-  res.render('index');
+  res.render('index', {'phrase':'Ipsum Lorem...'});
 });
 app.get('/about', function(req, res) {
   res.render('about');
