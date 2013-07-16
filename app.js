@@ -56,6 +56,9 @@ app.get('/index', function(req, res) {
 app.get('/about', function(req, res) {
   res.render('about');
 });
+app.get('/Login', function(req, res) {
+res.render('Login');
+});
 var server = http.createServer(app).listen(app.get('port'), function() {
   console.log("Express server listening on port " + app.get('port'));
 });
