@@ -49,7 +49,7 @@ exports.Attributes = function (hp, mp, str, vit, intl, wis, dex, agi, wit, cre, 
 }
 
 /**
- * Stores biographical information off character such as class ('order'), and other in-game 
+ * Stores biographical information of character such as class ('order'), and other in-game 
  * biographical details (such as nationality, factions, etc).
  * 
  * @param {Object} order The role or 'class'.
