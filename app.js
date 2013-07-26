@@ -66,6 +66,8 @@ res.render('home');
 app.post('/home', function(req, res) {
 var name = req.param('name');
 var pass = req.param('pass');
+var user = users.User(name,pass);
+user.save();
 res.render('home', {'name': name,'pass': pass});
 });
 var server = http.createServer(app).listen(app.get('port'), function() {

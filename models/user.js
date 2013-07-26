@@ -30,8 +30,11 @@ exports.User = function (username, password)
     
     
     // CODE GOES HERE
+	var allUsers = require("../database/user.json");
+	allUsers.push(this);
+	fs.writeFile("../solstice/database/user.json", JSON.stringify(allUsers), function(err){
+	if(err){throw err};});
   }
-  
   return user;
 }
 
