@@ -11,30 +11,27 @@ exports.User = function (username, password)
   user.username = username;
   user.password = password;
   
-  user.id = userNum++;
+  //user.id = userNum++; // No longer need this, see below
   
   user.save = function () {
-    // path to database: "../database/user.json"
+    // I've changed database/user.json, so check that out so the following makes more sense.
+    var allUsers = require("../database/user.json");
     
-    // First you will need to use require("../database/user.json") to get all existing users
-    // from the database, then you'll need to append (use the .push method here) to the database *this* 
-    // user. Finally, to persist back to the database, use fs.write(destination, content, callback).
-    // Where destination is the path to the database (given on line 17).
-    // Callback is a function that executes after the writing is done (successfully or not). I don't know
-    // if you need to give it a function to work, but if you do just give it a blank one, like function () {}.
-    // Content is the string that gets written back to the database. Say you do: 
-    // var allUsers = require("../database/user.json"), after using .push on allUsers to add *this* user, you'll need
-    // to do something like JSON.stringify(allUsers) to get the actual string to write out.
+    // First, add id to *this* here using the topID from the database
+    // Don't forget to increment topID for the next user
     
-    // So your last line should look something like fs.write("../database/user.json", JSON.stringify(allUsers), function() {});
-    
-    
-    // CODE GOES HERE
-	var allUsers = require("../database/user.json");
-	allUsers.push(this);
-	fs.writeFile("../solstice/database/user.json", JSON.stringify(allUsers), function(err){
-	if(err){throw err};});
+    allUsers.push(this); // Instead of just pushing it to allUsers, push it to userList
+                         // But, we need a good way of indexing for quick access. 
+                         // This is where the id comes in.
+                         // Do something like ...userList[this.id] = this
+                         
+    // The rest should be the same
+                         
+    fs.writeFile("../solstice/database/user.json", JSON.stringify(allUsers), function(err){
+      if(err){throw err};
+    });
   }
+  
   return user;
 }
 
