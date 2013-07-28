@@ -19,8 +19,11 @@ exports.User = function (username, password)
     
     // First, add id to *this* here using the topID from the database
     // Don't forget to increment topID for the next user
+	this.id =  allUsers.topID;
+	allUsers.topID++;
     
-    allUsers.push(this); // Instead of just pushing it to allUsers, push it to userList
+	allUsers.userList[this.id] = this;
+    // allUsers.userList.push(this); // Instead of just pushing it to allUsers, push it to userList
                          // But, we need a good way of indexing for quick access. 
                          // This is where the id comes in.
                          // Do something like ...userList[this.id] = this
