@@ -1,4 +1,4 @@
-##function draw ()
+## function draw ()
 
 Draws the image displayed to the user.
 
@@ -6,6 +6,6 @@ Draws the image displayed to the user.
 
 Listener for keyboard events.
 
-##function mousePressed(click)
+## function mousePressed(click)
 
 Listener for mouse events.
