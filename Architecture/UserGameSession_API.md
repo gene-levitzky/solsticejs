@@ -1,6 +1,6 @@
-# GameSession Object
+# UserGameSession Object
 
-The Game Session object encapsulates all of the behaviors that a user can perform at a given time in the game as well as the user interface displayed to the user.
+The User Game Session object encapsulates all of the behaviors that a user can perform at a given time in the game as well as the user interface displayed to the user.
 
 ## var Mode {}
 
@@ -31,7 +31,7 @@ Retrieves the model with the specified id.
 
 ## function sendToServer (modelObject)
 
-Saves the given model object to the database.
+Saves the given model object to the server.
 
 * `modelObject` The model object being updated.
 * Returns true if the operation was successful and false otherwise.
