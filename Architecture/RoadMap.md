@@ -4,13 +4,13 @@ The following is both an outline for the architecture of our project as well as 
 
 ## Glossary
 
-#### Client
-
-Generic term for anyone using our application. Often used as a contrast to the server, i.e., anything done client-side is executed by the client's browser and not by our server.
-
 #### API (Application Program Interface)
 
 The list of public functions and their behavior of a particular object.
+
+#### Client
+
+Generic term for anyone using our application. Often used as a contrast to the server, i.e., anything done client-side is executed by the client's browser and not by our server.
 
 #### User 
 
@@ -66,12 +66,12 @@ At the zone level, the update function might update the coordinate positions of 
 
 ## To Do List
 
-### APIs for Game object, Zone object, GameMode object, GameSession Object (server and client).**
-### A game user interface page.*
-### Admin page that users get taken to with the proper login information.*
-### Game mechanics design.
-#### Character development**
-#### Combat*
-#### Worldbuilding (Mobs, zones, items, etc)
+* APIs for Game object, Zone object, GameMode object, GameSession Object (server and client).**
+* A game user interface page.*
+* Admin page that users get taken to with the proper login information.*
+* Game mechanics design.
+  * Character development**
+  * Combat*
+  * Worldbuilding (Mobs, zones, items, etc)
 
 Priority is denoted by stars.
