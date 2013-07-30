@@ -8,6 +8,10 @@ The following is both an outline for the architecture of our project as well as 
 
 Generic term for anyone using our application. Often used as a contrast to the server, i.e., anything done client-side is executed by the client's browser and not by our server.
 
+#### API (Application Program Interface)
+
+The list of public functions and their behavior of a particular object.
+
 #### User 
 
 A client with an account on the website. Corresponds to the `user` model.
@@ -59,3 +63,15 @@ The Game object will also maintain the "main game loop" which drives the core of
     }
 
 At the zone level, the update function might update the coordinate positions of mobs, the local in-game time, and trigger a broadcast event to all users in that zone notifying them of the various changes and updating their views to reflect them.
+
+## To Do List
+
+### APIs for Game object, Zone object, GameMode object, GameSession Object (server and client).**
+### A game user interface page.*
+### Admin page that users get taken to with the proper login information.*
+### Game mechanics design.
+#### Character development**
+#### Combat*
+#### Worldbuilding (Mobs, zones, items, etc)
+
+Priority is denoted by stars.
