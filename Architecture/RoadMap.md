@@ -30,6 +30,10 @@ A Game Session object will be created on both the server and client side wheneve
 
 The Client/Server Game Session pair will maintain communication between each other via a WebSocket connection. 
 
+### Security
+
+As soon as a user logs in to our website, they will be provided with a cookie that stores their usename, their logged in status, and some encrypted key that can be verified by our server to authenticate the user. During gameplay, we'll be using WebSockets, so security shouldn't be a concern.
+
 ### *More To Come*
 
 ## Game State Data
