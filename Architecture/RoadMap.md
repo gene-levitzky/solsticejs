@@ -54,8 +54,8 @@ Global data will be stored mostly in the database. Auction house data, for examp
 
 The Game object will also maintain the "main game loop" which drives the core of the game. In pseudocode, the loop would look something like this:
 
-  while (true) {
-    foreach (zone in zones) zone.update();
-  }
+    while (true) {
+      foreach (zone in zones) zone.update();
+    }
 
 At the zone level, the update function might update the coordinate positions of mobs, the local in-game time, and trigger a broadcast event to all users in that zone notifying them of the various changes and updating their views to reflect them.
