@@ -62,16 +62,16 @@ Returns all items belonging to the player.
 
 ### function getCharacters(x, y)
 
-*param* `x` The x-coordinate of the characters.  
-*param* `y` The y-coordinate of the characters.  
-*returns* An array of characters.
+**param** `x` The x-coordinate of the characters.  
+**param** `y` The y-coordinate of the characters.  
+**returns** An array of characters.
   
 Retrieves characters (PCs, NPCs, and mobs), if any, at the specified location. Returns an empty array if none.
 
 ### function getTiles(x, y)
 
-*param* `x` The x-coordinate of the tile.  
-*param* `y` The y-coordinate of the tile.  
-*returns* An array of tiles.
+**param** `x` The x-coordinate of the tile.  
+**param** `y` The y-coordinate of the tile.  
+**returns** An array of tiles.
   
 Retrieves the map tile at the specified coordinate. Returns an empty array if invalid coordinate.
