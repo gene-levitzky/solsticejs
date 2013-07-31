@@ -75,8 +75,3 @@ Retrieves characters (PCs, NPCs, and mobs), if any, at the specified location. R
 *returns* An array of tiles.
   
 Retrieves the map tile at the specified coordinate. Returns an empty array if invalid coordinate.
-
-Ideas
-* Multiple tiles layered on top of each other to produce stacked effects.
-* Up to 6 players per tile. Arrange players like dots on a domino.
-* Visible but stationary mobs.
