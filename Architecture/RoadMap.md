@@ -79,3 +79,8 @@ At the zone level, the update function might update the coordinate positions of 
   * Worldbuilding (Mobs, zones, items, etc)
 
 Priority is denoted by stars.
+
+## Ideas
+* Multiple tiles layered on top of each other to produce stacked effects.
+* Up to 6 players per tile. Arrange players like dots on a domino.
+* Visible but stationary mobs.
