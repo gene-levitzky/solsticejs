@@ -1,38 +1,82 @@
-# UserGameSession Object
+# Client Game Session
 
-The User Game Session object encapsulates all of the behaviors that a user can perform at a given time in the game as well as the user interface displayed to the user.
+## Server API
 
-## var Mode {}
+Handles all communication between the client (via the Game Session object) and the Server.
 
-The mode object delegates user input/output based on what the user is currently doing in game (e.g., checking inventory, in combat, exploring, in a mini-game, etc).
+### function move(direction)
 
-### function draw (userData, zoneData)
+**param** `direction` The direction to move the PC. Must be either 'north', 'south', 'east', or 'west'.  
+**returns** An updated Zone object with the PC's new position or undefined otherwise.
 
-Draws the image displayed to the user.
+Moves the PC with the given ID in the given direction by 1 unit. Equivalent to incrementing or decrementing one of the PC's coordinates. If the PC is unable to move, such as due to obstacles or negative effects, the function will return false. If this function returns true, the PC will automatically interact with any object in the new tile (such as any NPC).  
 
-* `userData` User attributes, inventory, equipment, quest logs, etc.
-* `zoneData` The map grid, other pc/npc placements, zone's time, etc.
+### function useItem(id)
 
-### function keyPressed(key)
+**param** `id` The ID of the item in the PC's inventory.
+**returns** An updated PC inventory object or undefined otherwise.
 
-Listener for keyboard events.
+Uses the specified item in the PC's inventory. If the item is a piece of equipment, the server will attempt to equip that item onto the PC. If it's a consumable item such as a potion, food, etc, the server will attempt to consume it and add whatever, if any, effects to the PC. If the item was successfully used, a new inventory object will be returned to reflect the new state of the PC's inventory, if not, undefined will be returned.
 
-### function mousePressed(click)
+### function requestMode (modeName) 
 
-Listener for mouse events.
+**param** `modeName` The name of the requested mode.
+**returns** The requested mode or undefined.
 
-## function getFromServer (model, id)
+This function is called when the PC attempt to switch mode by navigating through client-side menus, e.g., when a PC attempts to view their inventory. If the mode is available in context, then a new instance of that mode will be returned, and if not, undefined will be returned.
 
-Retrieves the model with the specified id.
+## Game Mode API
 
-* `model` The model type, e.g., user, item, mob, in game time, etc.
-* `id` The id of the desired model instance, if applicable.
-* Returns the corresponding model object.
+The following functions are the ONLY functions that the user is intended to call, though we must keep in mind that all functions here are exposed to the user due to javascript's lack of the `private` keyword.
 
-## function sendToServer (modelObject)
+### function draw ()
 
-Saves the given model object to the server.
+Draws the user interface to the webpage.
 
-* `modelObject` The model object being updated.
-* Returns true if the operation was successful and false otherwise.
+### function keyboardEvent (event)
 
+**param** `event` The keyboard event.
+
+Catches keyboard events and then delegates them based on the current mode.
+
+### function mouseEvent (event)
+
+**param** `event` The mouse event.
+
+Catches mouse events and then delegates them based on the current mode.
+
+## Data API
+
+### function getEquipment (playerID)
+
+**param** `playerID` The ID of the player whose equipment is to be retrieved.
+**returns** An array of Equipment.
+
+Returns the Equipment objects belonging to the player with the specified ID. Use playerID = 0 to retrieve this player's equipment. Returns undefined for an invalid ID.
+
+### function getInventory ()
+
+**returns** An array of Items.
+
+Returns all items belonging to the player.
+
+### function getCharacters(x, y)
+
+*param* `x` The x-coordinate of the characters.  
+*param* `y` The y-coordinate of the characters.  
+*returns* An array of characters.
+  
+Retrieves characters (PCs, NPCs, and mobs), if any, at the specified location. Returns an empty array if none.
+
+### function getTiles(x, y)
+
+*param* `x` The x-coordinate of the tile.  
+*param* `y` The y-coordinate of the tile.  
+*returns* An array of tiles.
+  
+Retrieves the map tile at the specified coordinate. Returns an empty array if invalid coordinate.
+
+Ideas
+* Multiple tiles layered on top of each other to produce stacked effects.
+* Up to 6 players per tile. Arrange players like dots on a domino.
+* Visible but stationary mobs.
